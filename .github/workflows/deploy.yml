@@ -44,5 +44,5 @@ jobs:
         run: |
           kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig apply -f $GITHUB_WORKSPACE/.k8/deployment.yml
 
-      - name: Verify deployment
-        run: kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig rollout status deployment/mod-log-ingest-deployment
+#      - name: Verify deployment
+#        run: kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig rollout status deployment/mod-log-ingest-deployment
