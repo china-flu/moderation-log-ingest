@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mod-log-ingest
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "*/10 * * * *"
   jobTemplate:
     spec:
       template:
@@ -16,6 +16,56 @@ spec:
           containers:
             - name: mod-log-ingest
               image: <IMAGE>
+              env:
+                - name: DB_HOST
+                  valueFrom:
+                    secretKeyRef:
+                      name: prod-ingest-db-secret
+                      key: hostname
+                - name: DB_PORT
+                  valueFrom:
+                    secretKeyRef:
+                      name: prod-ingest-db-secret
+                      key: port
+                - name: DB_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: prod-ingest-db-secret
+                      key: username
+                - name: DB_PASS
+                  valueFrom:
+                    secretKeyRef:
+                      name: prod-ingest-db-secret
+                      key: password
+                - name: DB_NAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: prod-ingest-db-secret
+                      key: database
+                - name: PGSSLMODE
+                  value: "require"
+                - name: SUB_REDDIT
+                  value: "china_flu"
+                - name: REDDIT_USERNAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: prod-ingest-reddit-secret
+                      key: username
+                - name: REDDIT_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: prod-ingest-reddit-secret
+                      key: password
+                - name: REDDIT_CLIENT_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: prod-ingest-reddit-secret
+                      key: client_id
+                - name: REDDIT_CLIENT_SECRET
+                  valueFrom:
+                    secretKeyRef:
+                      name: prod-ingest-reddit-secret
+                      key: client_secret
               args:
                 - node
                 - dist/index.js

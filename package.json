@@ -1,12 +1,11 @@
 {
   "name": "moderation-log-ingest",
+  "private": true,
   "version": "1.0.0",
   "description": "a service which ingests/normalizes reddit moderation logs",
-  "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
-    "build": "tsc",
-    "lint": "eslint . --ext .ts,.tsx"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -15,7 +14,6 @@
   "author": "GUH <contact@covid19.fyi>",
   "license": "GPL-3.0",
   "dependencies": {
-    "bind-decorator": "^1.0.11",
     "luxon": "^1.22.0",
     "pg": "^7.18.2",
     "snoowrap": "^1.21.0",
