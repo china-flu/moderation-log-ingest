@@ -4,7 +4,9 @@
   "description": "a service which ingests/normalizes reddit moderation logs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "repository": {
     "type": "git",
@@ -13,7 +15,6 @@
   "author": "GUH <contact@covid19.fyi>",
   "license": "GPL-3.0",
   "dependencies": {
-    "async-mutex": "^0.1.4",
     "bind-decorator": "^1.0.11",
     "luxon": "^1.22.0",
     "pg": "^7.18.2",

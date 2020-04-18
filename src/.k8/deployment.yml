@@ -1,0 +1,18 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mod-log-ingest-deployment
+  labels:
+    app: mod-log-ingest
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+      template:
+        spec:
+          containers:
+            - name: mod-log-ingest
+              image: <IMAGE>
+              args:
+                - node
+                - dist/index.js
+          restartPolicy: OnFailure
