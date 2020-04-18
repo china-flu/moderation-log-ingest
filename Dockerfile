@@ -8,6 +8,7 @@ RUN npm install
 
 COPY src .
 
+RUN ls
 RUN npm run build
 RUN npm prune --production
 
