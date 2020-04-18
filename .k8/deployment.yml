@@ -7,7 +7,14 @@ metadata:
 spec:
   schedule: "*/1 * * * *"
   jobTemplate:
+    spec:
+      selector:
+        matchLabels:
+          app: mod-log-ingest
       template:
+        metadata:
+          labels:
+            app: mod-log-ingest
         spec:
           containers:
             - name: mod-log-ingest
