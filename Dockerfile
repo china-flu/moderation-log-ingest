@@ -6,6 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 
+COPY . .
+
 RUN ls
 RUN npm run build
 RUN npm prune --production
