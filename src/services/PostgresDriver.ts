@@ -42,7 +42,10 @@ export class PostgresDriver {
       host: DB_HOST,
       password: DB_PASS,
       port: Number(DB_PORT),
-      user: DB_USER
+      user: DB_USER,
+      ssl: {
+        rejectUnauthorized: false
+      }
     };
   }
 
