@@ -1,6 +1,6 @@
 import { Pool, PoolConfig, QueryResult } from "pg";
 
-const { DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME } = process.env;
+const { DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME, PGSSLMODE } = process.env;
 
 type AcceptedValues = string | number | boolean | null | Buffer | Date;
 
@@ -37,16 +37,19 @@ export class PostgresDriver {
   }
 
   private getConfig(): PoolConfig {
-    return {
+    const config: PoolConfig = {
       database: DB_NAME,
       host: DB_HOST,
       password: DB_PASS,
       port: Number(DB_PORT),
       user: DB_USER,
-      ssl: {
+    };
+    if (PGSSLMODE === "require") {
+      config.ssl = {
         rejectUnauthorized: false
       }
-    };
+    }
+    return config;
   }
 
 }
