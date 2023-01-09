@@ -14,7 +14,7 @@
   "author": "GUH <contact@covid19.fyi>",
   "license": "GPL-3.0",
   "dependencies": {
-    "luxon": "^1.22.0",
+    "luxon": "^1.28.1",
     "pg": "^7.18.2",
     "snoowrap": "^1.21.0",
     "uuid": "^3.4.0"
